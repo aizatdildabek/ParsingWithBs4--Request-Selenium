@@ -26,16 +26,16 @@ source.raise_for_status()
     
 soup = BeautifulSoup(source.text, 'html.parser')
 print(soup) # возвращает html код
-# movies = soup.find('tbody', class_="lister-list").find_all('tr')
-# #print(len(movies)) #250 row, because 250 top film
-# for movie in movies:
+movies = soup.find('tbody', class_="lister-list").find_all('tr')
+#print(len(movies)) #250 row, because 250 top film
+for movie in movies:
 
-#     name = movie.find('td',class_='titleColumn').a.text  #html tag <a>
-#    #rank = movie.find('td', class_='titleColumn').get_text(strip=True)
-#     rank = movie.find('td', class_='titleColumn').get_text(strip=True).split('.')[0]  #[0]-index 0 возвращает только номер фильма
-#     year = movie.find('td', class_='titleColumn').span.text.strip('()') #возвращает только год премьера/strip возвращает без ()
-#     rating = movie.find('td', class_='ratingColumn imdbRating').strong.text  #strong html tag 
-#     print(rank, name, year, rating)
-#     sheet.append([rank, name, year, rating])
+     name = movie.find('td',class_='titleColumn').a.text  #html tag <a>
+    #rank = movie.find('td', class_='titleColumn').get_text(strip=True)
+     rank = movie.find('td', class_='titleColumn').get_text(strip=True).split('.')[0]  #[0]-index 0 возвращает только номер фильма
+     year = movie.find('td', class_='titleColumn').span.text.strip('()') #возвращает только год премьера/strip возвращает без ()
+     rating = movie.find('td', class_='ratingColumn imdbRating').strong.text  #strong html tag 
+     print(rank, name, year, rating)
+     sheet.append([rank, name, year, rating])
 
 # excel.save('MovieRatings.xlsx')
